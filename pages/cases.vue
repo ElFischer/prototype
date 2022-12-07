@@ -12,9 +12,6 @@
         <template #content>
             <ViewsTable :data="data?.data" :meta="data?.meta" :type="'case'" />
             <pre>{{ requiredFields }}</pre>
-            <div v-for="item in requiredFields">
-                {{ item }}
-            </div>
         </template>
     </NuxtLayout>
 </template>
