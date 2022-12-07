@@ -1,7 +1,12 @@
 
 export const sendRestReq = async (restURL, opts) => {
     try {
-        const token = import.meta.env.VITE_STRAPI_TOKEN
+        const session = useSession();
+        let token = ''
+        if (session.value.data) {
+            token = import.meta.env.VITE_STRAPI_TOKEN
+        }
+
         let res = await fetch(restURL, {
             method: "GET",
             // fetch options
