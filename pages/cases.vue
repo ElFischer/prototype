@@ -2,7 +2,7 @@
     <NuxtLayout name="table">
         <template #title>
             <v-toolbar>
-                <v-toolbar-title class="text-h6">
+                <v-toolbar-title class="text-h6 font-weight-bold ma-0">
                     Table-View: {{ schema?.displayName }}
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -11,7 +11,7 @@
         </template>
         <template #content>
             <ViewsTable :data="data?.data" :meta="data?.meta" :type="'case'" />
-            <pre>{{ requiredFields }}</pre>
+            <!-- <pre>{{ requiredFields }}</pre> -->
         </template>
     </NuxtLayout>
 </template>

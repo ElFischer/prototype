@@ -4,7 +4,7 @@
 const session = useSession();
 </script>
 <template>
-    <v-app-bar flat class="w-100">
+    <v-app-bar flat :class="session.pending ? 'w-100' : ''">
         <v-app-bar-nav-icon @click="openMenu"></v-app-bar-nav-icon>
         <v-toolbar-title>
             <NuxtLink to="/">

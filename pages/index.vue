@@ -3,7 +3,7 @@
         <v-row v-if="session.data?.user">
             <v-col md="12">
                 <v-toolbar>
-                    <v-toolbar-title>
+                    <v-toolbar-title class="text-h6 font-weight-bold ma-0">
                         Dashboard
                     </v-toolbar-title>
                     <v-spacer></v-spacer>

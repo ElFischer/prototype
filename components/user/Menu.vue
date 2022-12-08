@@ -3,7 +3,7 @@
         <v-menu v-model="menu" :close-on-content-click="false" location="end">
             <template v-slot:activator="{ props }">
                 <v-avatar color="indigo" v-bind="props">
-                    <span>{{user?.username?.charAt(0)}}</span>
+                    <span>{{user?.username?.charAt(0).toUpperCase()}}</span>
                 </v-avatar>
             </template>
 

@@ -2,7 +2,7 @@
     <NuxtLayout name="table">
         <template #title>
             <v-toolbar>
-                <v-toolbar-title class="text-h6">
+                <v-toolbar-title class="text-h6 font-weight-bold ma-0">
                     Fristen
                 </v-toolbar-title>
                 <v-spacer></v-spacer>

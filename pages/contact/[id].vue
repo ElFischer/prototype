@@ -2,52 +2,47 @@
     <NuxtLayout name="single-view">
         <template #left>
             <v-sheet rounded="lg">
-                <v-list>
-                    <v-list-item :title="data?.usersPermissionsUser?.data?.attributes.username"
-                        :subtitle="data?.usersPermissionsUser?.data?.id">
+                <v-list rounded="lg">
+                    <v-list-item>
+                        <template v-slot:title>
+                            <span class="text-h6 font-weight-bold ma-0">{{ data?.usersPermissionsUser?.data?.attributes.username }}</span>
+                        </template>
+                        <template v-slot:subtitle>
+                            <span class="">Akte-ID: {{ data?.usersPermissionsUser?.data?.id }}</span>
+                        </template>
                         <template v-slot:append>
                             <v-btn size="small" variant="text" icon="mdi-dots-vertical"></v-btn>
                         </template>
                     </v-list-item>
                 </v-list>
-                <v-divider></v-divider>
+                <!-- <v-divider></v-divider>
                 <v-list rounded="lg">
-                    <!-- <v-list-item>
-                        {{ data?.usersPermissionsUser?.data }}
-                    </v-list-item> 
-                    <v-divider class="my-2"></v-divider>-->
                     <v-list-item v-for="n in 5" :key="n" link>
                         <v-list-item-title>
                             List Item {{ n }}
                         </v-list-item-title>
                     </v-list-item>
-                    <!-- <v-divider class="my-2"></v-divider>
-                    <v-list-item link color="grey-lighten-4">
-                        <v-list-item-title>
-                            Refresh
-                        </v-list-item-title>
-                    </v-list-item> -->
-                </v-list>
+                </v-list> -->
             </v-sheet>
         </template>
         <template #content>
-            <v-toolbar>
+           <!--  <v-toolbar>
                 <template v-slot:prepend>
                     <v-btn icon="mdi-chevron-left" @click="$router.go(-1)"></v-btn>
                 </template>
                 <v-toolbar-title class="text-h6">
                     Data-Object - type {{ route.name }}
                 </v-toolbar-title>
-            </v-toolbar>
+            </v-toolbar> -->
             <v-sheet min-height="10vh" rounded="lg">
-                <v-card title="Data" flat>
+                <v-card title="Data" flat rounded="lg">
                     <v-card-text>
                         <pre>{{ data }}</pre>
                     </v-card-text>
                 </v-card>
             </v-sheet>
             <v-sheet rounded="lg">
-                <v-card title="Schema" flat class="mt-10">
+                <v-card title="Schema" flat class="mt-10" rounded="lg">
                     <v-card-text>
                         <pre>{{ schema }}</pre>
                     </v-card-text>

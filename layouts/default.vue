@@ -1,10 +1,9 @@
     <!-- layouts/default.vue -->
 <template>
     <v-app :theme="theme">
-        <v-navigation-drawer v-model="drawer">
+        <v-navigation-drawer v-model="drawer" disable-resize-watcher disable-route-watcher permanent scrim>
             <v-list>
-                <v-list-item title="Kanzlei"
-                    subtitle="Gansel-Rechtsanwälte">
+                <v-list-item title="Kanzlei" subtitle="Gansel-Rechtsanwälte">
                     <template v-slot:append>
                         <v-btn size="small" variant="text" icon="mdi-menu-down"></v-btn>
                     </template>
@@ -20,8 +19,7 @@
                     </template>
 
                     <v-list-item-title>
-                        <NuxtLink :to="item.url" 
-                            style="text-decoration: none; color: inherit;">
+                        <NuxtLink :to="item.url" style="text-decoration: none; color: inherit;">
                             {{ item.text }}
                         </NuxtLink>
                     </v-list-item-title>
@@ -56,7 +54,7 @@ export default {
         links: [
             {
                 text: 'Dashboard',
-                icon: 'mdi-folder',
+                icon: 'mdi-view-dashboard',
                 url: '/'
             },
             {
@@ -66,12 +64,12 @@ export default {
             },
             {
                 text: 'Fristen',
-                icon: 'mdi-folder',
+                icon: 'mdi-update',
                 url: '/deadlines'
             },
             {
                 text: 'Kontakte',
-                icon: 'mdi-folder',
+                icon: 'mdi-account-multiple',
                 url: '/contacts'
             }
         ],
