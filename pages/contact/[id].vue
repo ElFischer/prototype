@@ -8,7 +8,7 @@
                             <span class="text-h6 font-weight-bold ma-0">{{ data?.usersPermissionsUser?.data?.attributes.username }}</span>
                         </template>
                         <template v-slot:subtitle>
-                            <span class="">Akte-ID: {{ data?.usersPermissionsUser?.data?.id }}</span>
+                            <span class="">Kontakt-ID: {{ data?.usersPermissionsUser?.data?.id }}</span>
                         </template>
                         <template v-slot:append>
                             <v-btn size="small" variant="text" icon="mdi-dots-vertical"></v-btn>
