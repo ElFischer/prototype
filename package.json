@@ -9,14 +9,13 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0"
+    "@nuxtjs/apollo": "^5.0.0-alpha.5",
+    "nuxt": "latest"
   },
   "dependencies": {
+    "@auth0/auth0-vue": "^1.0.3",
     "@mdi/font": "^7.0.96",
     "sass": "^1.56.1",
     "vuetify": "^3.0.3"
-  },
-  "engines": {
-    "node": "16.x"
   }
 }

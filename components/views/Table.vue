@@ -1,43 +1,31 @@
 <template>
-    <v-sheet min-height="80vh" rounded="lg" class="d-flex flex-column ">
-        <v-table>
-            <thead>
-                <tr>
-                    <th class="text-left">
-                        ID
-                    </th>
-                    <th class="text-left">
-                        Name
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in data" :key="item.id" @click="$router.push(`./${type}/${item.id}`)"
-                    style="cursor: pointer">
-                    <td>{{ item.id }}</td>
-                    <td>{{ (item.attributes.name || item.attributes.username) }}</td>
-                </tr>
-            </tbody>
-        </v-table>
-        <div v-if="meta" class="mt-auto mb-5">
-            <ElementsPagination :pagination="meta?.pagination" @pageChange="pageChange" />
-        </div>
+    <v-sheet min-height="80vh" rounded="lg" class="d-flex flex-column pa-10">
+       <!--  <v-data-table v-model:items-per-page="itemsPerPage" :headers="headers" -->
+       <!--      :items="data?.[Object.keys(data)[0]]?.data" @click:row="handleClick"></v-data-table> -->
+        <ul>
+            <li v-for="item in data?.[Object.keys(data)[0]].data" :key="item._id" style="cursor: pointer">
+                <div @click="handleClick(item)">{{ item }}</div>
+            </li>
+
+        </ul>
     </v-sheet>
 
 </template>
 
 <script>
 export default {
-    props: ['data', 'type', 'meta'],
+    props: ['data', 'type', 'headers'],
     data () {
         return {
             search: '',
+            itemsPerPage: 5
         }
     },
     methods: {
-        pageChange (value) {
-            console.log(value) // someValue
-        }
+        async handleClick (item) {
+            /* this.$router.push(`./${this.type}/${item.item.value._id}`) */
+            await navigateTo({ path: `./${this.type}/${item._id}` })
+        },
     }
 }
 </script>

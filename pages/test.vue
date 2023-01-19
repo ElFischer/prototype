@@ -7,20 +7,19 @@
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <!-- <ViewsTableCreateItemMenu :requiredFields="requiredFields" /> -->
-                <v-text-field density="compact" variant="solo" label="Filter" class="elevation-0"
-                    append-inner-icon="mdi-filter" single-line hide-details v-model="filter"></v-text-field>
             </v-toolbar>
         </template>
         <template #content>
+            <!-- <v-data-table v-model:items-per-page="itemsPerPage" :headers="headers" :items="data?.cases?.data" @click:row="handleClick()"
+                class="elevation-1"></v-data-table> -->
             <ViewsTable :data="data" :type="'case'" :headers="headers" />
+            <!-- <pre>{{ data?.cases?.schema }}</pre> -->
         </template>
     </NuxtLayout>
 </template>
 <script lang="ts" setup>
-import { DocumentNode } from 'graphql';
 import { ref } from 'vue'
-const filter = ref('')
-const data = ref()
+
 const headers = ref([
     {
         title: 'Name',
@@ -32,8 +31,8 @@ const headers = ref([
 ])
 
 const query = gql`
-  query ($filter: JSONObject, $meta: PaginationArg){
-    cases (filter: $filter, meta: $meta){
+  query {
+    cases {
         data {
             _id
             category
@@ -55,34 +54,11 @@ const query = gql`
     }
   }
 `
+const variables = { limit: 5 }
+const { data } = await useAsyncQuery(query, variables)
+console.log(data)
 
-// Variables that could be sent within the query
-const variables = {
-    filter: { "name": { "$regex": `${filter}` } },
-    meta: {
-        "page": 2,
-        "pageSize": 5
-    }
-}
-
-onMounted(async () => {
-    data.value = await getPosts(query, variables)
-});
-
-const getPosts = async (query: DocumentNode, variables: Object) => {
-    return await useAsyncQuery(query, variables)
-}
-
-const getData = async () => {
-    data.value = await getPosts(query, variables)
-}
-/* data.value = await getPosts(query, variables) */
-
-
+const handleClick = (item) => {
+    console.log('roue´', item)
+};
 </script>
-
-<style>
-.v-field--variant-solo {
-    box-shadow: unset;
-}
-</style>
